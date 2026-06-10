@@ -1,0 +1,117 @@
+:root {
+  --bg: #08111f;
+  --panel: rgba(255, 255, 255, 0.08);
+  --panel-strong: rgba(255, 255, 255, 0.13);
+  --text: #f6f9ff;
+  --muted: #a8b5c7;
+  --line: rgba(255, 255, 255, 0.14);
+  --accent: #7dd3fc;
+  --accent-2: #c084fc;
+  --shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(125, 211, 252, 0.28), transparent 34%),
+    radial-gradient(circle at 80% 5%, rgba(192, 132, 252, 0.25), transparent 30%),
+    linear-gradient(135deg, #08111f 0%, #111827 48%, #172554 100%);
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+.app-shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 48px; }
+.hero-card, .panel {
+  border: 1px solid var(--line);
+  background: linear-gradient(145deg, rgba(255,255,255,0.13), rgba(255,255,255,0.05));
+  border-radius: 34px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+}
+.hero-card { padding: 28px; overflow: hidden; position: relative; }
+.hero-card::after {
+  content: "";
+  position: absolute;
+  width: 360px; height: 360px; border-radius: 50%;
+  right: -120px; top: -120px;
+  background: rgba(125, 211, 252, 0.18);
+  filter: blur(10px);
+  pointer-events: none;
+}
+.topbar, .brand, .status-row, .temperature-row, .section-heading { display: flex; align-items: center; }
+.topbar { justify-content: space-between; gap: 20px; position: relative; z-index: 1; }
+.brand { gap: 14px; }
+.brand-mark {
+  width: 48px; height: 48px; display: grid; place-items: center;
+  border-radius: 16px; background: rgba(255,255,255,0.14); font-size: 25px;
+}
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: 1.55rem; }
+.eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; font-weight: 800; }
+.unit-toggle {
+  border: 1px solid var(--line); background: rgba(255,255,255,0.1); color: var(--text);
+  width: 54px; height: 44px; border-radius: 999px; font-weight: 800;
+}
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) 420px; gap: 28px; margin-top: 58px; position: relative; z-index: 1; }
+.hero-copy h2 { font-size: clamp(2.2rem, 5vw, 4.7rem); line-height: 0.94; letter-spacing: -0.07em; max-width: 720px; margin-top: 14px; }
+.hero-text { color: var(--muted); max-width: 620px; margin: 22px 0; line-height: 1.7; }
+.search-card { display: flex; gap: 12px; max-width: 610px; padding: 8px; border-radius: 22px; background: rgba(255,255,255,0.11); border: 1px solid var(--line); }
+.search-card input { flex: 1; min-width: 0; border: 0; outline: 0; color: var(--text); background: transparent; padding: 14px 16px; }
+.search-card input::placeholder { color: #7f8ea3; }
+.search-card button, .quick-cities button {
+  border: 0; border-radius: 16px; color: #08111f; background: linear-gradient(135deg, var(--accent), #e0f2fe); font-weight: 800; padding: 0 22px;
+}
+.quick-cities { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+.quick-cities button { padding: 10px 14px; background: rgba(255,255,255,0.12); color: var(--text); border: 1px solid var(--line); }
+.glass { background: rgba(255,255,255,0.12); border: 1px solid var(--line); border-radius: 28px; padding: 24px; }
+.current-card h3 { font-size: 1.6rem; margin-top: 22px; }
+.status-row { justify-content: space-between; }
+.weather-icon { font-size: 4rem; }
+.condition-badge { border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; color: var(--accent); background: rgba(125,211,252,0.1); font-weight: 800; }
+.temperature-row { gap: 18px; margin: 28px 0; }
+.temperature-row strong { font-size: 4.6rem; letter-spacing: -0.08em; }
+.muted { color: var(--muted); }
+.metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.metric-grid div, .forecast-day, .insight, .feature-grid div { background: rgba(255,255,255,0.08); border: 1px solid var(--line); border-radius: 20px; padding: 16px; }
+.metric-grid span { display: block; color: var(--muted); font-size: 0.82rem; margin-bottom: 6px; }
+.content-grid { display: grid; grid-template-columns: 1.5fr 0.9fr; gap: 22px; margin-top: 22px; }
+.panel { padding: 24px; }
+.section-heading { justify-content: space-between; gap: 18px; margin-bottom: 18px; }
+.section-heading h2 { font-size: 1.8rem; letter-spacing: -0.04em; }
+.forecast-list { display: grid; gap: 12px; }
+.forecast-day { display: grid; grid-template-columns: 1.1fr 70px 1fr 1fr; align-items: center; gap: 14px; }
+.forecast-day .date { font-weight: 800; }
+.forecast-day .icon { font-size: 2rem; }
+.temp-bar { height: 8px; border-radius: 999px; background: rgba(255,255,255,0.13); overflow: hidden; }
+.temp-fill { height: 100%; width: var(--w); background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: 999px; }
+.insight-list { display: grid; gap: 12px; }
+.insight strong { display: block; margin-bottom: 6px; }
+.tech-panel { margin-top: 22px; }
+.feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.feature-grid p { color: var(--muted); line-height: 1.55; margin-top: 8px; }
+.toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px);
+  background: #f8fafc; color: #0f172a; padding: 12px 16px; border-radius: 999px;
+  opacity: 0; pointer-events: none; transition: 0.25s ease; box-shadow: var(--shadow); font-weight: 700;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); }
+@media (max-width: 900px) {
+  .hero-grid, .content-grid { grid-template-columns: 1fr; }
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .app-shell { width: min(100% - 20px, 1180px); padding-top: 10px; }
+  .hero-card, .panel { border-radius: 24px; padding: 18px; }
+  .topbar { align-items: flex-start; }
+  .hero-grid { margin-top: 34px; }
+  .search-card { flex-direction: column; }
+  .search-card button { padding: 14px; }
+  .forecast-day { grid-template-columns: 1fr 52px; }
+  .forecast-day > :nth-child(3), .forecast-day > :nth-child(4) { grid-column: 1 / -1; }
+  .feature-grid, .metric-grid { grid-template-columns: 1fr; }
+}

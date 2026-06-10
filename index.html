@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A polished weather dashboard using the Open-Meteo API with city search, forecast cards, weather insights, and responsive design." />
+  <title>SkyCast — Professional Weather Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-card" aria-label="Weather search dashboard">
+      <nav class="topbar">
+        <div class="brand">
+          <div class="brand-mark">☁</div>
+          <div>
+            <p class="eyebrow">Recruiter-ready API project</p>
+            <h1>SkyCast</h1>
+          </div>
+        </div>
+        <button class="unit-toggle" id="unitToggle" type="button" aria-label="Toggle Fahrenheit and Celsius">°F</button>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Live weather intelligence</p>
+          <h2>Search any city. Get clear forecasts, comfort data, and smart daily insights.</h2>
+          <p class="hero-text">Built with vanilla JavaScript, async API calls, error handling, responsive UI, local storage, and no API key required.</p>
+          <form id="searchForm" class="search-card" autocomplete="off">
+            <label for="cityInput" class="sr-only">Search city</label>
+            <input id="cityInput" type="search" placeholder="Search city, e.g. Chicago" value="Chicago" />
+            <button type="submit">Get Weather</button>
+          </form>
+          <div class="quick-cities" aria-label="Quick city search buttons">
+            <button data-city="Chicago">Chicago</button>
+            <button data-city="New York">New York</button>
+            <button data-city="Ulaanbaatar">Ulaanbaatar</button>
+            <button data-city="Tokyo">Tokyo</button>
+          </div>
+        </div>
+
+        <article class="current-card glass" aria-live="polite">
+          <div class="status-row">
+            <span id="weatherIcon" class="weather-icon">⛅</span>
+            <span id="conditionBadge" class="condition-badge">Loading</span>
+          </div>
+          <h3 id="locationName">Chicago, United States</h3>
+          <p id="updatedTime" class="muted">Fetching latest data...</p>
+          <div class="temperature-row">
+            <strong id="currentTemp">--°</strong>
+            <div>
+              <p id="currentCondition">Weather condition</p>
+              <p id="feelsLike" class="muted">Feels like --°</p>
+            </div>
+          </div>
+          <div class="metric-grid">
+            <div><span>Wind</span><strong id="windSpeed">-- mph</strong></div>
+            <div><span>Humidity</span><strong id="humidity">--%</strong></div>
+            <div><span>Rain chance</span><strong id="rainChance">--%</strong></div>
+            <div><span>UV Index</span><strong id="uvIndex">--</strong></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel forecast-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">7-day outlook</p>
+            <h2>Forecast</h2>
+          </div>
+          <p class="muted">Daily highs, lows, precipitation, and wind.</p>
+        </div>
+        <div id="forecastList" class="forecast-list"></div>
+      </article>
+
+      <aside class="panel insights-panel">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">Decision support</p>
+            <h2>Today’s insights</h2>
+          </div>
+        </div>
+        <div id="insightList" class="insight-list"></div>
+      </aside>
+    </section>
+
+    <section class="panel tech-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Why recruiters notice it</p>
+          <h2>Engineering highlights</h2>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div><strong>Async API workflow</strong><p>City geocoding + forecast fetch using modern async/await.</p></div>
+        <div><strong>Real error handling</strong><p>Handles empty searches, unknown cities, network failures, and loading states.</p></div>
+        <div><strong>Clean UI architecture</strong><p>Separated HTML, CSS, and JavaScript with readable component-style functions.</p></div>
+        <div><strong>Portfolio ready</strong><p>Responsive layout, local storage, unit toggle, README, and GitHub Pages deployment.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
